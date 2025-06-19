@@ -99,6 +99,35 @@ struct Board {
         return true;
     }
 
+    void display(bool revealShips = false) const {
+        cout << "  ";
+        for (int x = 0; x < BOARD_SIZE; ++x)
+            cout << x << " ";
+        cout << "\n";
+
+        for (int y = 0; y < BOARD_SIZE; ++y) {
+            cout << y << " ";
+            for (int x = 0; x < BOARD_SIZE; ++x) {
+                if (!grid[y][x].isRevealed) {
+                    if (revealShips && grid[y][x].state == SHIP)
+                        cout << "S ";
+                    else
+                        cout << ". ";
+                }
+                else if (grid[y][x].state == HIT) {
+                    cout << "X ";
+                }
+                else if (grid[y][x].state == MISS) {
+                    cout << "o ";
+                }
+                else {
+                    cout << ". ";
+                }
+            }
+            cout << "\n";
+        }
+    }
+
 };
 
 int main()
