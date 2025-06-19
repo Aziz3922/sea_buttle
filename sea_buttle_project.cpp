@@ -196,4 +196,10 @@ int main()
             cout << "Компьютер промахнулся.\n";
     }
 
+    if (playerBoard.allShipsSunk())
+        cout << "Вы проиграли.\n";
+    else
+        cout << "Вы победили!\n";
+
+    return 0;
 }
