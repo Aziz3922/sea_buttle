@@ -33,6 +33,13 @@ struct Ship {
     }
 };
 
+struct Board {
+    Cell grid[BOARD_SIZE][BOARD_SIZE];
+    Ship ships[MAX_SHIPS];
+    int shipCount = 0;
+
+
+};
 
 int main()
 {
