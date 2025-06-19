@@ -17,6 +17,11 @@ enum Direction {
     VERTICAL
 };
 
+struct Cell {
+    CellState state = EMPTY;
+    bool isRevealed = false;
+};
+
 
 
 int main()
