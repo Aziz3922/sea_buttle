@@ -22,6 +22,16 @@ struct Cell {
     bool isRevealed = false;
 };
 
+struct Ship {
+    int size;
+    int x, y;
+    Direction dir;
+    int hits = 0;
+
+    bool isSunk() const {
+        return hits >= size;
+    }
+};
 
 
 int main()
