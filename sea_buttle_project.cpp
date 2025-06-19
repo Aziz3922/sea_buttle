@@ -64,6 +64,33 @@ struct Board {
         ships[shipCount++] = ship;
     }
 
+    bool isHit(int x, int y) {
+        if (grid[y][x].isRevealed)
+            return false;
+
+        grid[y][x].isRevealed = true;
+
+        if (grid[y][x].state == SHIP) {
+            grid[y][x].state = HIT;
+            for (int s = 0; s < shipCount; ++s) {
+                Ship& ship = ships[s];
+                for (int i = 0; i < ship.size; ++i) {
+                    int nx = ship.x + (ship.dir == HORIZONTAL ? i : 0);
+                    int ny = ship.y + (ship.dir == VERTICAL ? i : 0);
+                    if (nx == x && ny == y) {
+                        ship.hits++;
+                        break;
+                    }
+                }
+            }
+            return true;
+        }
+        else {
+            grid[y][x].state = MISS;
+            return false;
+        }
+    }
+
 };
 
 int main()
