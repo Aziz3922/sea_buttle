@@ -91,6 +91,14 @@ struct Board {
         }
     }
 
+    bool allShipsSunk() const {
+        for (int i = 0; i < shipCount; ++i) {
+            if (!ships[i].isSunk())
+                return false;
+        }
+        return true;
+    }
+
 };
 
 int main()
