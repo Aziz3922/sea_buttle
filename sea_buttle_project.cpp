@@ -132,5 +132,35 @@ struct Board {
 
 int main()
 {
-    
+    setlocale(LC_ALL, "Russian");
+
+    Board playerBoard, enemyBoard;
+
+    // Расстановка кораблей вручную или случайно
+    Ship s1 = { 5, 0, 0, HORIZONTAL };
+    Ship s2 = { 4, 2, 2, VERTICAL };
+    Ship s3 = { 3, 5, 1, HORIZONTAL };
+    Ship s4 = { 3, 7, 6, VERTICAL };
+    Ship s5 = { 2, 3, 8, HORIZONTAL };
+
+    playerBoard.placeShip(s1);
+    playerBoard.placeShip(s2);
+    playerBoard.placeShip(s3);
+    playerBoard.placeShip(s4);
+    playerBoard.placeShip(s5);
+
+    // Расстановка кораблей противника случайно
+    Ship c1 = { 5, rand() % 5, rand() % 10, HORIZONTAL };
+    Ship c2 = { 4, rand() % 10, rand() % 6, VERTICAL };
+    Ship c3 = { 3, rand() % 7, rand() % 10, HORIZONTAL };
+    Ship c4 = { 3, rand() % 10, rand() % 7, VERTICAL };
+    Ship c5 = { 2, rand() % 8, rand() % 10, HORIZONTAL };
+
+    enemyBoard.placeShip(c1);
+    enemyBoard.placeShip(c2);
+    enemyBoard.placeShip(c3);
+    enemyBoard.placeShip(c4);
+    enemyBoard.placeShip(c5);
+
+
 }
