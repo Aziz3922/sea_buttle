@@ -12,6 +12,13 @@ enum CellState {
     MISS
 };
 
+enum Direction {
+    HORIZONTAL,
+    VERTICAL
+};
+
+
+
 int main()
 {
     
