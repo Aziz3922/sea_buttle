@@ -163,4 +163,37 @@ int main()
     enemyBoard.placeShip(c5);
 
 
+    while (!playerBoard.allShipsSunk() && !enemyBoard.allShipsSunk()) {
+        int x, y;
+        cout << "\nВаше поле:\n";
+        playerBoard.display(true);
+        cout << "\nПоле врага:\n";
+        enemyBoard.display();
+
+        cout << "\nВведите координаты выстрела (x y): ";
+        cin >> x >> y;
+
+        if (x < 0 || y < 0 || x >= BOARD_SIZE || y >= BOARD_SIZE) {
+            cout << "Неверные координаты. Попробуйте снова.\n";
+            continue;
+        }
+
+        if (enemyBoard.isHit(x, y))
+            cout << "Попадание!\n";
+        else
+            cout << "Мимо.\n";
+
+        // Простой ход компьютера (рандом)
+        do {
+            x = rand() % BOARD_SIZE;
+            y = rand() % BOARD_SIZE;
+        } while (playerBoard.grid[y][x].isRevealed);
+
+        cout << "Компьютер стреляет в (" << x << ", " << y << ")\n";
+        if (playerBoard.isHit(x, y))
+            cout << "Компьютер попал!\n";
+        else
+            cout << "Компьютер промахнулся.\n";
+    }
+
 }
