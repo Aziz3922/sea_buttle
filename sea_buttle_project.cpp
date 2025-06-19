@@ -51,6 +51,19 @@ struct Board {
         return true;
     }
 
+    void placeShip(const Ship& ship) {
+        if (!canPlaceShip(ship) || shipCount >= MAX_SHIPS)
+            return;
+
+        for (int i = 0; i < ship.size; ++i) {
+            int nx = ship.x + (ship.dir == HORIZONTAL ? i : 0);
+            int ny = ship.y + (ship.dir == VERTICAL ? i : 0);
+            grid[ny][nx].state = SHIP;
+        }
+
+        ships[shipCount++] = ship;
+    }
+
 };
 
 int main()
